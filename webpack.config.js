@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 
@@ -23,9 +22,10 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-react'],
+            plugins: ['add-module-exports','@babel/plugin-transform-modules-commonjs']
           },
         },
-      },
+      }
     ],
   },
   plugins: [HTMLWebpackPluginConfig],
