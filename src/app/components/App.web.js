@@ -1,10 +1,12 @@
 import React from 'react'
+import { Container, TopNav } from '../../layout/components'
 
 function App() {
   return (
-    <>
-      <h1>Hello world from react</h1>
-    </>
+    <div className="container-fluid overflow-hidden">
+      <TopNav/>
+      <Container/>
+    </div>
   )
 }
 
