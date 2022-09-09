@@ -37,6 +37,7 @@ module.exports = {
       directory: './'
     }
   },
+  devtool: 'inline-source-map',
   resolve: {
     aliasFields: [
         'browser'

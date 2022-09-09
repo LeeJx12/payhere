@@ -3,6 +3,7 @@ import { AbstractStorage } from "./AbstractStorage";
 
 export default class Storage extends AbstractStorage {
     constructor() {
+        super();
         this.storage = AsyncStorage;
         this._cache = {};
     }

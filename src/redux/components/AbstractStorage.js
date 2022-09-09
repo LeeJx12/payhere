@@ -1,9 +1,8 @@
 export class AbstractStorage {
-  storage;
+  contructor() {
+    this._storage = undefined;
+  }
 
-  getItem(key) {}
-
-  setItem(key, value) {}
-
-  removeItem(key) {}
+  get storage(){ return this._storage }
+  set storage( value ){ this._storage = value }
 }

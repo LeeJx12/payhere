@@ -1,4 +1,4 @@
-import { combineReducers, createStore } from 'redux';
+import { combineReducers, compose, createStore } from 'redux';
 import Thunk from 'redux-thunk';
 import PersistenceRegistry from './PersistenceRegistry';
 import MiddlewareRegistry from './MiddlewareRegistry';
@@ -22,7 +22,7 @@ class ReducerRegistry {
 
     _createStore() {
         const reducer = this.combineReducers();
-        let middleware = MiddlewareRegistry.applyMiddleware(Thunk);
+        let middleware = compose(MiddlewareRegistry.applyMiddleware(Thunk));
         const store = createStore(reducer, PersistenceRegistry.getPersistedState(), middleware);
 
         StateListenerRegistry.subscribe(store);
