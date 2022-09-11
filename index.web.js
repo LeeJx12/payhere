@@ -1,16 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import App from './src/app/components';
-import ReduxRegistry from './src/redux/ReduxRegistry';
+import AppWeb from './src/app/components/App.web';
+import ReduxRegistry from './src/redux/ReducerRegistry';
 
 const root = ReactDOM.createRoot(document.getElementById("app"));
 const store = ReduxRegistry._createStore();
 
+window.APP = store;
+
 root.render(
     <React.StrictMode>
         <Provider store={store}>
-            <App />
+            <AppWeb />
         </Provider>
     </React.StrictMode>
 );

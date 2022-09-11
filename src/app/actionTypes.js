@@ -1,0 +1,3 @@
+
+export const APP_WILL_MOUNT = 'APP_WILL_MOUNT';
+export const APP_WILL_UNMOUNT = 'APP_WILL_UNMOUNT';

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { SearchInput } from "../../search/components";
 
 class TopNav extends Component {
     constructor(props) {
@@ -25,10 +26,7 @@ class TopNav extends Component {
                                 <a className="nav-link" href="#">Issues</a>
                             </li>
                         </ul>
-                        <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
-                            <button className="btn btn-outline-success" type="submit">Search</button>
-                        </form>
+                        <SearchInput/>
                     </div>
                 </div>
             </nav>

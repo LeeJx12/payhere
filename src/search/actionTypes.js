@@ -1,0 +1,1 @@
+export const ACTION_ON_SEARCH = 'ACTION_ON_SEARCH';
