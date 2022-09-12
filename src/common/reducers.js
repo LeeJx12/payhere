@@ -1,5 +1,6 @@
 import ReducerRegistry from "../redux/ReducerRegistry";
-import { HIDE_MODAL_POPUP, HIDE_PROGRESS, SHOW_MODAL_POPUP, SHOW_PROGRESS } from './actionTypes';
+import { CHANGE_TAB, HIDE_MODAL_POPUP, HIDE_PROGRESS, SHOW_MODAL_POPUP, SHOW_PROGRESS } from './actionTypes';
+import { TOP_NAV_TAB_HOME } from "./constants";
 
 function _getInitialState() {
     return {
@@ -9,7 +10,8 @@ function _getInitialState() {
             body: '',
             callbackFn: undefined
         },
-        onProgress: false
+        onProgress: false,
+        tab: TOP_NAV_TAB_HOME
     }
 }
 
@@ -29,6 +31,10 @@ ReducerRegistry.register(`test/payhere/common`, (state = _getInitialState(), act
         }
         case HIDE_PROGRESS: {
             state.onProgress = false;
+            break;
+        }
+        case CHANGE_TAB: {
+            state.tab = action.tab;
             break;
         }
     }

@@ -1,0 +1,9 @@
+.mw-50 {
+    max-width: 50%;
+}
+
+.card-title:hover {
+    text-decoration: underline;
+    color: rgba(var(--bs-primary-rgb));
+    cursor: pointer;
+}

@@ -1,30 +1,32 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getFormattedNumber, timeForToday } from "../../common/functions";
+import { getFormattedNumber, openGithub, timeForToday } from "../../common/functions";
 
 
 export default class SearchResultItem extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
-        const { item } = this.props;
+        const { item, _addRepository, _delRepository, isRegistered } = this.props;
 
         const { 
+            id,
             full_name, 
             description, 
             stargazers_count, 
             language, 
             license, 
             updated_at, 
-            topics 
+            topics,
+            html_url, 
         } = item;
 
+        const btnDesc = isRegistered ? '등록해제' : '등록';
+        const btnClass = `btn btn-sm btn-outline-${isRegistered ? 'secondary' : 'primary'}`;
+        const btnAction = isRegistered ? (name) => _delRepository(name) : (name, item) => _addRepository(item);
+
         return (
-            <div className="card w-auto my-3">
+            <div className="card w-auto my-3" key={full_name}>
                 <div className="card-body">
-                    <h5 className="card-title">{full_name}</h5>
+                    <h5 className="card-title" onClick={() => openGithub(html_url)}>{full_name}</h5>
                     <h6 className="card-subtitle mb-2 text-muted">{description}</h6>
                     { topics && topics.length > 0 &&
                         <h6>
@@ -49,7 +51,7 @@ export default class SearchResultItem extends Component {
                             {timeForToday(updated_at)}
                         </span>
                     </p>
-                    <button type="button" className="btn btn-outline-primary btn-sm">등록</button>
+                    <button type="button" className={btnClass} onClick={() => btnAction(full_name, item)}>{btnDesc}</button>
                 </div>
             </div>
         )

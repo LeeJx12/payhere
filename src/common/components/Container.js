@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { SearchResultList } from "../../search/components";
+import { RegisterPane } from "../../register";
+import SearchPane from "../../search/components/SearchPane";
+import { TOP_NAV_TAB_HOME, TOP_NAV_TAB_REGISTERED } from "../constants";
 
 class Container extends Component {
     constructor(props) {
@@ -8,28 +10,17 @@ class Container extends Component {
     }
 
     render() {
-        const { _searchResult } = this.props;
+        const { _tab } = this.props;
 
         return (
             <>
-                { _searchResult && _searchResult.data.total_count > 0 &&
-                    <SearchResultList/>
+                {
+                    TOP_NAV_TAB_HOME === _tab &&
+                    <SearchPane/>
                 }
-                { _searchResult && _searchResult.data.total_count === 0 &&
-                    <div className="mt-5 p-4">
-                        <div className="d-flex flex-column justify-content-center align-items-center">
-                            <img className="w-25" src="/public/icons/alert.svg" />
-                            <h1 className="m-5">검색결과가 없습니다!</h1>
-                        </div>
-                    </div>
-                }
-                { !_searchResult && 
-                    <div className="mt-5 p-4">
-                        <div className="d-flex flex-column justify-content-center align-items-center">
-                            <img className="w-25" src="/public/icons/search.svg" />
-                            <h1 className="m-5">Github Repository를 검색해보세요!</h1>
-                        </div>
-                    </div>
+                {
+                    TOP_NAV_TAB_REGISTERED === _tab &&
+                    <RegisterPane/>
                 }
             </>
         )
@@ -37,10 +28,10 @@ class Container extends Component {
 }
 
 function _mapStateToProps(state) {
-    const searchResult = state['test/payhere/search'].searchResult;
+    const tab = state['test/payhere/common'].tab;
 
     return {
-        _searchResult: searchResult
+        _tab: tab
     }
 }
 

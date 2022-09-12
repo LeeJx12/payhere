@@ -36,7 +36,7 @@ export function getFormattedNumber(value) {
         const unit = units[i];
         const num = value / Number(unit[0]);
 
-        if (num > 1) {
+        if (num >= 1) {
             result = num.toFixed(1) + unit[1];
             break;
         }
@@ -47,4 +47,8 @@ export function getFormattedNumber(value) {
     }
 
     return result;
+}
+
+export function openGithub(url) {
+    window.open(url);
 }

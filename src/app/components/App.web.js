@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Container, Modal, Progress, TopNav } from '../../common/components'
 import { appWillMount, appWillUnmount } from "../actions";
 import '../reducers';
+import '../../redux/middleware';
 
 class App extends Component {
     constructor(props) {

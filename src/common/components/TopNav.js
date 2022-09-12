@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { SearchInput } from "../../search/components";
+import { changeTab } from "../actions";
 
 class TopNav extends Component {
     constructor(props) {
@@ -8,8 +9,10 @@ class TopNav extends Component {
     }
 
     render() {
+        const { _tab } = this.props;
+
         return (
-            <nav className="navbar navbar-expand-lg bg-light">
+            <nav className="navbar navbar-expand-lg bg-light mt-2">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">
                         <img src="/public/icons/github.svg" alt="Bootstrap" width="30" height="24"></img>
@@ -20,10 +23,13 @@ class TopNav extends Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="#">Home</a>
+                                <a className={`nav-link ${'HOME' === _tab ? 'active' : ''}`} id="HOME" href="#" onClick={this.eventHandler}>Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Issues</a>
+                                <a className={`nav-link ${'ISSUES' === _tab ? 'active' : ''}`} id="ISSUES" href="#" onClick={this.eventHandler}>Issues</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className={`nav-link ${'REGISTERED' === _tab ? 'active' : ''}`} id="REGISTERED" href="#" onClick={this.eventHandler}>Registered</a>
                             </li>
                         </ul>
                         <SearchInput/>
@@ -32,12 +38,31 @@ class TopNav extends Component {
             </nav>
         )
     }
-}
 
-function _mapStateToProps(state) {
-    return {
+    eventHandler = e => {
+        e.preventDefault();
+        const { _changeTab, _tab } = this.props;
 
+        if (e.target.id === _tab) return;
+
+        _changeTab(e.target.id);
     }
 }
 
-export default connect(_mapStateToProps)(TopNav);
+function _mapStateToProps(state) {
+    const tab = state['test/payhere/common'].tab;
+
+    return {
+        _tab: tab
+    }
+}
+
+function _mapDispatchToProps(dispatch) {
+    return {
+        _changeTab: function(tab) {
+            dispatch(changeTab(tab));
+        }
+    }
+}
+
+export default connect(_mapStateToProps, _mapDispatchToProps)(TopNav);

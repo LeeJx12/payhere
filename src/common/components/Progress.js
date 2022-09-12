@@ -1,23 +1,23 @@
-import React, { Component } from "react";
+import React, { Component, CSSProperties } from "react";
 import { css } from "@emotion/react";
 import BeatLoader from "react-spinners/BeatLoader";
 import { connect } from "react-redux";
 
-const override = css`
-  display: block;
-  margin: 0 auto;
-  border-color: red;
-`;
+const override = {
+    display: 'block',
+    margin: 'auto',
+    borderColor: 'red'
+}
 
 export class Progress extends Component {
     render() {
         const { _onProgress } = this.props;
 
-        const prgClass = `modal-backdrop fade ${_onProgress ? 'show' : 'dp_n'}`;
+        const prgClass = `modal-backdrop fade d-flex ${_onProgress ? 'show' : 'dp_n'}`;
 
         return (
             <div className={prgClass}>
-                <BeatLoader color="#40BAD2" loading={_onProgress} css={override} size={15} />
+                <BeatLoader color="#40BAD2" loading={_onProgress} cssOverride={override} size={15} />
             </div>
         )
     }

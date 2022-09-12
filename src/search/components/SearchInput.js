@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { showModalPopup } from "../../common/actions";
-import { MODAL_TYPE_ALERT } from "../../common/constants";
+import { changeTab, showModalPopup, showProgress } from "../../common/actions";
+import { MODAL_TYPE_ALERT, TOP_NAV_TAB_HOME } from "../../common/constants";
 import { onSearch } from "../actions";
 import '../middleware';
 
@@ -40,6 +40,8 @@ function _mapStateToProps(state) {
 function _mapDispatchToProps(dispatch) {
     return {
         _onSearch: function(keyword) {
+            dispatch(showProgress());
+            dispatch(changeTab(TOP_NAV_TAB_HOME));
             dispatch(onSearch(keyword));
         },
         _onSearchError: function(message) {
