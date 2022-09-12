@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import IssuePane from "../../issue/components/IssuePane";
 import { RegisterPane } from "../../register";
 import SearchPane from "../../search/components/SearchPane";
-import { TOP_NAV_TAB_HOME, TOP_NAV_TAB_REGISTERED } from "../constants";
+import { TOP_NAV_TAB_HOME, TOP_NAV_TAB_ISSUES, TOP_NAV_TAB_REGISTERED } from "../constants";
 
 class Container extends Component {
     constructor(props) {
@@ -21,6 +22,10 @@ class Container extends Component {
                 {
                     TOP_NAV_TAB_REGISTERED === _tab &&
                     <RegisterPane/>
+                }
+                {
+                    TOP_NAV_TAB_ISSUES === _tab &&
+                    <IssuePane/>
                 }
             </>
         )

@@ -4,6 +4,7 @@ import { Container, Modal, Progress, TopNav } from '../../common/components'
 import { appWillMount, appWillUnmount } from "../actions";
 import '../reducers';
 import '../../redux/middleware';
+import '../../issue/middleware';
 
 class App extends Component {
     constructor(props) {

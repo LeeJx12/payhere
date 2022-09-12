@@ -5,6 +5,7 @@ import { APP_WILL_MOUNT, APP_WILL_UNMOUNT } from './actionTypes';
 import '../common/reducers';
 import '../search/reducers';
 import '../register/reducers';
+import '../issue/reducers';
 
 ReducerRegistry.register('test/payhere/app', (state = {}, action) => {
     switch(action.type) {

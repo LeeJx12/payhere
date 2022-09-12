@@ -9,3 +9,5 @@ export const TOP_NAV_TAB_ISSUES =               'ISSUES';
 export const TOP_NAV_TAB_REGISTERED =           'REGISTERED';
 
 export const REPOSITORY_REGISTER_LIMIT =        4;
+
+export const ISSUE_TAB_ALL =                    'ALL';

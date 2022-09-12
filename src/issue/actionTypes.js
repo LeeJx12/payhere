@@ -1,0 +1,5 @@
+
+export const GET_ISSUE_LIST = 'GET_ISSUE_LIST';
+export const SET_ISSUE_LIST = 'SET_ISSUE_LIST';
+
+export const CHANGE_ISSUE_TAB = 'CHANGE_ISSUE_TAB';
