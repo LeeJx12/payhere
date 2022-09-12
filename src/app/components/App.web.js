@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Container, TopNav } from '../../layout/components'
+import { Container, Modal, Progress, TopNav } from '../../common/components'
 import { appWillMount, appWillUnmount } from "../actions";
 import '../reducers';
 
@@ -18,18 +18,32 @@ class App extends Component {
     }
 
     render() {
+        const { _onModalShow, _onProgress } = this.props;
+
         return (
-            <div className="container-fluid overflow-hidden">
-                <TopNav />
-                <Container />
-            </div>
+            <>
+              <div className="container-fluid overflow-hidden">
+                  <TopNav />
+                  <Container />
+              </div>
+              { _onModalShow && 
+                  <Modal />
+              }
+              { _onProgress && 
+                  <Progress />
+              }
+            </>
         )
     }
 }
 
 function mapStateToProps(state) {
-    return {
+    const { onShow } = state[`test/payhere/common`].modal;
+    const onProgress = state[`test/payhere/common`].onProgress;
 
+    return {
+        _onModalShow: onShow,
+        _onProgress: onProgress
     }
 }
 

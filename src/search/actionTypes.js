@@ -1,1 +1,2 @@
 export const ACTION_ON_SEARCH = 'ACTION_ON_SEARCH';
+export const ON_SEARCH_RESULT = 'ON_SEARCH_RESULT';
