@@ -22,7 +22,6 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-react'],
-            plugins: ['add-module-exports','@babel/plugin-transform-modules-commonjs']
           },
         },
       }
@@ -37,7 +36,7 @@ module.exports = {
       directory: './'
     }
   },
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   resolve: {
     aliasFields: [
         'browser'
@@ -49,5 +48,5 @@ module.exports = {
         '.js',
         '.json'
     ]
-}
+  }
 };
