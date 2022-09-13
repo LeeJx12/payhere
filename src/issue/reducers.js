@@ -9,7 +9,6 @@ function _getInitialState() {
         issues: {},
         totalCnt: 0,
         issueTab: ISSUE_TAB_ALL,
-        issueList: [],
         page: 1
     }
 }
@@ -26,6 +25,7 @@ ReducerRegistry.register(`test/payhere/issue`, (state = _getInitialState(), acti
         }
         case CHANGE_ISSUE_TAB: {
             state.issueTab = action.tab;
+            state.page = 1;
             break;
         }
     }
@@ -39,7 +39,6 @@ ReducerRegistry.register(`test/payhere/issue`, (state = _getInitialState(), acti
 function _setIssueList(state, {name, data, page}) {
     const { issues } = state;
 
-    data.repo_name = name;
     issues[name] = data;
     state.totalCnt = Object.keys(issues).reduce((acc, curr) => acc + issues[curr].length, 0);
     state.issues = _.cloneDeep(issues);

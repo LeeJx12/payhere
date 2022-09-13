@@ -1,3 +1,4 @@
+import { hideProgress } from "../common/actions";
 import { LIST_COUNT_DEFAULT } from "../common/constants";
 import MiddlewareRegistry from "../redux/MiddlewareRegistry";
 import { ADD_REPOSITORY, DEL_REPOSITORY } from "../register";
@@ -18,8 +19,9 @@ MiddlewareRegistry.register(store => next => action => {
 function _getIssueList({dispatch, getState}, {item, page = 1}) {
     const { octokit } = getState()['test/payhere/app'];
 
-    octokit.request(`GET /repos/${item.full_name}/issues?per_page=${LIST_COUNT_DEFAULT}&page=${page}`)
+    octokit.request(`GET /repos/${item.full_name}/issues?per_page=${LIST_COUNT_DEFAULT}&page=${page}&sort=updated`)
         .then(data => {
             dispatch(setIssueList(item.full_name, data.data, page));
+            dispatch(hideProgress());
         })
 }

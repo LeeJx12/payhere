@@ -29,7 +29,14 @@ function initializeApp(state, action) {
     const { app } = action;
 
     if (state.app !== app) {
-        const octokit = new Octokit();
+        let authToken = undefined;
+        if (process.env?.PERSONAL_ACCESS_TOKEN) {
+            authToken = {
+                auth: process.env?.PERSONAL_ACCESS_TOKEN
+            }
+        }
+
+        const octokit = new Octokit(authToken);
         return {
             ...state,
             octokit: octokit,

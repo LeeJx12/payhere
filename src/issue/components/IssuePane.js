@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { NoData } from "../../common/components/NoData";
 import { getIssueList } from "../actions";
 import IssueList from "./IssueList";
+import { showProgress } from '../../common/actions';
 
 class IssuePane extends Component {
     componentDidMount() {
@@ -50,7 +51,8 @@ function _mapStateToProps(state) {
 function _mapDispatchToProps(dispatch) {
     return {
         _getIssueList: function(item) {
-            dispatch(getIssueList(item))
+            dispatch(showProgress());
+            dispatch(getIssueList(item));
         }
     }
 }
