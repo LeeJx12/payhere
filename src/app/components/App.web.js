@@ -5,6 +5,10 @@ import { appWillMount, appWillUnmount } from "../actions";
 import '../reducers';
 import '../../redux/middleware';
 import '../../issue/middleware';
+import '../../common/reducers';
+import '../../search/reducers';
+import '../../register/reducers';
+import '../../issue/reducers';
 
 class App extends Component {
     constructor(props) {

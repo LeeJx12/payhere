@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import '../../redux/middleware';
-import '../../issue/middleware';
 import {
   SafeAreaView,
   ScrollView,
@@ -13,6 +11,14 @@ import {
 import { appWillMount, appWillUnmount } from '../actions';
 import { connect } from 'react-redux';
 import BootstrapStyleSheet from 'react-native-bootstrap-styles';
+import TopNavNative from '../../common/components/TopNav.native';
+import '../../redux/middleware';
+import '../../issue/middleware';
+import '../../common/reducers';
+import '../../search/reducers';
+import '../../register/reducers';
+import '../../issue/reducers';
+import GITHUB from '../../../public/icons/github.svg';
 
 const styleSheet = new BootstrapStyleSheet();
 const { s } = styleSheet;
@@ -36,8 +42,9 @@ class App extends Component {
       return (
           <SafeAreaView>
               <ScrollView style={[s.containerFluid, s.overflowHidden]}>
-                  {/* <TopNav />
-                    <Container /> */}
+                   {/* <TopNavNative /> */}
+                   {/* <Container /> */}
+                   <GITHUB width="100%" height="100%"/>
               </ScrollView>
               {/* { _onModalShow && 
                   <Modal />
