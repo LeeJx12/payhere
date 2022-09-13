@@ -14,4 +14,10 @@ module.exports = {
       },
     }),
   },
+  resolver: {
+    extraNodeModules: {
+      crypto: require.resolve('react-native-crypto'),
+      stream: require.resolve('react-native-stream'),
+    }
+  }
 };
