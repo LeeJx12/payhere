@@ -130,4 +130,5 @@ dist
 #.etc
 .bundle/
 __tests__/
-/android
+/android/
+package-lock.json
