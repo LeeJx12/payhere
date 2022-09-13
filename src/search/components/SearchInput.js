@@ -14,7 +14,7 @@ class SearchInput extends Component {
         return (
             <form className="d-flex" role="search" onSubmit={this.actionSearch}>
                 <input className="form-control me-2" type="search" id="keyword" placeholder="Search" aria-label="Search"></input>
-                <button className="btn btn-outline-success" type="submit">Search</button>
+                <button className="btn btn-outline-primary" type="submit">Search</button>
             </form>
         )
     }
