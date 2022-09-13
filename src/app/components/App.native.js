@@ -1,12 +1,6 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import React from 'react';
+import React, { Component } from 'react';
+import '../../redux/middleware';
+import '../../issue/middleware';
 import {
   SafeAreaView,
   ScrollView,
@@ -16,82 +10,65 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import { appWillMount, appWillUnmount } from '../actions';
+import { connect } from 'react-redux';
+import BootstrapStyleSheet from 'react-native-bootstrap-styles';
 
+const styleSheet = new BootstrapStyleSheet();
+const { s } = styleSheet;
 
-/* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
- * LTI update could not be added via codemod */
-const Section = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+class App extends Component {
+  constructor(props) {
+      super(props);
+  }
 
-const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  componentDidMount() {
+      this.props._appWillMount(this);
+  }
 
-  const backgroundStyle = {
-  };
+  componentWillUnmount() {
+      this.props._appWillUnmount(this);
+  }
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <View
-          style={{
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-          </Section>
-          <Section title="Debug">
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
+  render() {
+      const { _onModalShow, _onProgress } = this.props;
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+      return (
+          <SafeAreaView>
+              <ScrollView style={[s.containerFluid, s.overflowHidden]}>
+                  {/* <TopNav />
+                    <Container /> */}
+              </ScrollView>
+              {/* { _onModalShow && 
+                  <Modal />
+              }
+              { _onProgress && 
+                  <Progress />
+              } */}
+          </SafeAreaView>
+      )
+  }
+}
 
-export default App;
+function mapStateToProps(state) {
+  const { onShow } = state[`test/payhere/common`].modal;
+  const onProgress = state[`test/payhere/common`].onProgress;
+
+  return {
+      _onModalShow: onShow,
+      _onProgress: onProgress
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+      _appWillMount(app) {
+          dispatch(appWillMount(app));
+      },
+      _appWillUnmount(app) {
+          dispatch(appWillUnmount(app));
+      }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
