@@ -1,8 +1,6 @@
-import { AbstractStorage } from "./AbstractStorage";
 
-export default class Storage extends AbstractStorage {
+export default class Storage {
     constructor() {
-        super();
         this.storage = window.localStorage;
     }
 

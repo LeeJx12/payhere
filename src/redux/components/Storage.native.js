@@ -1,35 +1,39 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { AbstractStorage } from "./AbstractStorage";
 
-export default class Storage extends AbstractStorage {
+export default class Storage {
     constructor() {
-        super();
-        this.storage = AsyncStorage;
-        this._cache = {};
+        this._initializing = this.initialize();
+    }
+
+    initialize() {
+        return new Promise(resolve => {
+            AsyncStorage.getAllKeys().then((...keys) => {
+                const _keys = keys[keys.length - 1];
+
+                AsyncStorage.multiGet(_keys).then((...values) => {
+                    const _values = values[values.length - 1];
+
+                    for (let [ key, value ] of _values) {
+                        if (!this.hasOwnProperty(key)) {
+                            this[key] = value;
+                        }
+                    }
+
+                    resolve();
+                })
+            })
+        })
     }
 
     getItem(key) {
-        const cacheValue = this._cache[key];
-
-        if (!cacheValue) {
-            return new Promise((resolve, reject) => {
-                this.storage.getItem(key, (err, result) => {
-                    err && reject(err);
-                    !err && resolve(result);
-                })
-            })
-        } else {
-            return cacheValue;
-        }
+        return this[key];
     }
 
     setItem(key, value) {
-        this.storage.setItem(key, value);
-        this._cache[key] = value;
+        AsyncStorage.setItem(key, value, () => {this[key] = value});
     }
 
     removeItem(key) {
-        this.storage.removeItem(key);
-        delete this._cache[key];
+        AsyncStorage.removeItem(key, () => {delete this[key]});
     }
 }
