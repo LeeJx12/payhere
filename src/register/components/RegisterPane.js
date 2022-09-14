@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { NoData } from "../../common/components/NoData";
 import RegisterGrid from "./RegisterGrid";
 
+/**
+ * 등록된 Repository 영역
+ */
 class RegisterPane extends Component {
     render() {
         const { _registerList } = this.props;

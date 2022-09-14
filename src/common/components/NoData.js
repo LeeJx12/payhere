@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 
+/**
+ * 리스트에서 조회된 결과 없을때 표시
+ * @param {*} param0 
+ * @returns 
+ */
 export function NoData({icon, children}) {
     const iconSrc = `/public/icons/${icon}.svg`;
     

@@ -15,6 +15,11 @@ MiddlewareRegistry.register(store => next => action => {
     return next(action);
 })
 
+/**
+ * API 호출
+ * @param {*} param0 
+ * @param {*} param1 
+ */
 function onSearch({dispatch, getState}, {keyword, page = 1}) {
     const octokit = getState()['test/payhere/app'].octokit;
 

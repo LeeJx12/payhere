@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { NoData } from "../../common/components/NoData";
 import { SearchResultList } from "../components";
 
+/**
+ * 검색결과 표시 영역
+ */
 class SearchPane extends Component {
     render() {
         const { _searchResult } = this.props;

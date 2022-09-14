@@ -20,6 +20,13 @@ ReducerRegistry.register('test/payhere/app', (state = {}, action) => {
     return state;
 })
 
+/**
+ * octokit 초기화
+ * Github API 호출 회수 제한으로 인해 PAT 설정 추가 (.env : PERSONAL_ACCESS_TOKEN)
+ * @param {*} state 
+ * @param {*} action 
+ * @returns 
+ */
 function initializeApp(state, action) {
     const { app } = action;
 

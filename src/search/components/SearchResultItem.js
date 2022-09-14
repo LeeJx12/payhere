@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getFormattedNumber, openGithub, timeForToday } from "../../common/functions";
 
-
+/**
+ * 검색결과 리스트의 객체
+ */
 export default class SearchResultItem extends Component {
     render() {
         const { item, _addRepository, _delRepository, isRegistered } = this.props;

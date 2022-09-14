@@ -4,6 +4,9 @@ import PersistenceRegistry from './PersistenceRegistry';
 import MiddlewareRegistry from './MiddlewareRegistry';
 import StateListenerRegistry from './StateListenerRegistry';
 
+/**
+ * Reducer 초기화, 등록 및 Provider에 제공할 store 생성
+ */
 class ReducerRegistry {
     constructor() {
         this._elements = {};

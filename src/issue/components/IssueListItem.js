@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { openGithub, timeForToday } from "../../common/functions";
 
+/**
+ * 이슈 리스트의 각 객체
+ */
 export class IssueListItem extends Component {
     render() {
         const { item } = this.props;

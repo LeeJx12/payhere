@@ -5,6 +5,9 @@ import { RegisterPane } from "../../register";
 import SearchPane from "../../search/components/SearchPane";
 import { TOP_NAV_TAB_HOME, TOP_NAV_TAB_ISSUES, TOP_NAV_TAB_REGISTERED } from "../constants";
 
+/**
+ * 컨텐츠 영역 (검색결과, 등록된 Repository, 이슈모아보기)
+ */
 class Container extends Component {
     constructor(props) {
         super(props);

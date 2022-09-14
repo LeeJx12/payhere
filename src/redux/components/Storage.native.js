@@ -1,5 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+/**
+ * AsyncStorage 사용 (Native)
+ */
 export default class Storage {
     constructor() {
         this._initializing = this.initialize();

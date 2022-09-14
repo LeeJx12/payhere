@@ -10,6 +10,7 @@ function _getInitialState() {
     }
 }
 
+// 등록된 Repository는 storage에 저장
 PersistenceRegistry.register(`test/payhere/register`, {
     registerList: true,
 })

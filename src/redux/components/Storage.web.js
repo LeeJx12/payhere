@@ -1,4 +1,7 @@
 
+/**
+ * window.localStorage 사용 (Web)
+ */
 export default class Storage {
     constructor() {
         this.storage = window.localStorage;

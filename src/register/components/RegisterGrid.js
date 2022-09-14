@@ -4,6 +4,9 @@ import { showProgress } from "../../common/actions";
 import SearchResultItem from "../../search/components/SearchResultItem";
 import { delRepository, getRepository } from "../actions";
 
+/**
+ * 등록된 Repository를 grid 형태로 표시
+ */
 class RegisterGrid extends Component {
     render() {
         const { _registerList, _delRepository } = this.props;

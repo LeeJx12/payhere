@@ -5,7 +5,12 @@ import { getIssueList } from "../actions";
 import IssueList from "./IssueList";
 import { showProgress } from '../../common/actions';
 
+/**
+ * 이슈 모아보기 영역
+ */
 class IssuePane extends Component {
+    
+    //이슈의 경우 개수가 많고 변동성이 크기 때문에 초기화시 가져오지 않고 조회시 가져오도록함.
     componentDidMount() {
         this.props._registerList.forEach(item => this.props._getIssueList(item));
     }

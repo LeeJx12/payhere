@@ -5,10 +5,16 @@ import { ISSUE_TAB_ALL, LIST_COUNT_DEFAULT } from "../../common/constants";
 import { changeIssueTab, getIssueList } from "../actions";
 import { IssueListItem } from "./IssueListItem";
 
+/**
+ * 이슈 모아보기 리스트
+ */
 class IssueList extends Component {
     render() {
         const { _registerList, _issues, _issueTab, _page } = this.props;
 
+        // Github API에서 여러 Repository의 issue를 한번에 조회하는 부분을 찾지 못해 다음과 같이 표기
+        // 전체 탭에서 등록된 Repository들의 issue를 각각 페이징하고 합쳐서 리스팅함. (페이지네이션은 이전/다음만 표시)
+        // 각 Repository 탭에서는 해당하는 issue를 전체 개수와 현재 페이지에 맞게 페이징하여 리스팅함.
         let _issueList = [];
         let _totalCnt = 0;
         if (ISSUE_TAB_ALL === _issueTab) {

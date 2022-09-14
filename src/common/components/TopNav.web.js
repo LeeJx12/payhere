@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { SearchInput } from "../../search/components";
 import { changeTab } from "../actions";
 
+/**
+ * 상단메뉴 영역
+ */
 class TopNav extends Component {
     constructor(props) {
         super(props);

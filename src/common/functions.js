@@ -1,5 +1,9 @@
 
-
+/**
+ * 시간표기 형식 변경 함수
+ * @param {*} value 
+ * @returns 
+ */
 export function timeForToday(value) {
     const today = new Date();
     const timeValue = new Date(value);
@@ -23,6 +27,10 @@ export function timeForToday(value) {
     return `${Math.floor(betweenTimeDay / 365)}년전`;
 }
 
+/**
+ * star_gazed 표기 형식 변경 함수
+ * ex.) 1.5k, 2.8m
+ */
 const units = [
     ['1000000000000', 't'],
     ['1000000000', 'g'],
@@ -49,6 +57,10 @@ export function getFormattedNumber(value) {
     return result;
 }
 
+/**
+ * Repository, Issue 새창으로 열기
+ * @param {*} url 
+ */
 export function openGithub(url) {
     window.open(url);
 }

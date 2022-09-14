@@ -14,6 +14,8 @@ MiddlewareRegistry.register(store => next => action => {
     return result;
 });
 
+//Storage에 반복적으로 접근시 부하가 크므로 delay를 줌
+//lodash _.throttle 사용
 export const throttledPersistState
     = _.throttle(
         state => PersistenceRegistry.persistState(state),

@@ -3,6 +3,9 @@ import Storage from './components';
 
 const PERSISTED_STATE_NAME = 'payhere-state';
 
+/**
+ * Storage에 저장할 데이터 관리를 위해 추가
+ */
 class PersistenceRegistry {
     constructor() {
         this._elements = {};
@@ -72,6 +75,11 @@ class PersistenceRegistry {
         this._defaultStates[name] = defaultState;
     }
 
+    /**
+     * 정합성 체크
+     * @param {*} state 
+     * @returns 
+     */
     _calculateChecksum(state) {
         try {
             return md5.hex(JSON.stringify(state) || '');
@@ -82,6 +90,11 @@ class PersistenceRegistry {
         }
     }
 
+    /**
+     * state 데이터 중 PersistenceRegistry에 등록한 데이터만 필터링함
+     * @param {*} state 
+     * @returns 
+     */
     _getFilteredState(state) {
         const filteredState = {};
 
@@ -114,6 +127,13 @@ class PersistenceRegistry {
         return filteredSubtree;
     }
 
+    /**
+     * 모듈이 많아지고 Reducer에서 관리할 데이터가 많아질때 state 데이터를 트리형태로 저장하기 위한 로직 추가
+     * @param {*} subtreeName 
+     * @param {*} subtreeConfig 
+     * @param {*} subtreeDefaults 
+     * @returns 
+     */
     _getPersistedSubtree(subtreeName, subtreeConfig, subtreeDefaults) {
         let persistedSubtree = this._storage.getItem(subtreeName);
 

@@ -7,6 +7,9 @@ import { addRepository, delRepository } from "../../register";
 import SearchResultItem from "./SearchResultItem";
 import { onSearch } from '../actions';
 
+/**
+ * 검색결과 리스트
+ */
 export class SearchResultList extends Component {
     constructor(props) {
         super(props);

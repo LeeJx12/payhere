@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 
+/**
+ * 페이징 처리 공통 모듈
+ * isSimple=true 이면 번호 없이 이전/다음만 표시
+ */
 export class Pagination extends Component {
     render() {
         let {

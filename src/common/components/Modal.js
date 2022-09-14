@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { hideModalPopup } from "../actions";
 import { MODAL_TYPE_ALERT, MODAL_TYPE_CONFIRM } from "../constants";
 
+/**
+ * 메세지 팝업 (Alert, Confirm)
+ */
 export class Modal extends Component {
     render() {
         const { _onShow, _modalType, _body } = this.props;

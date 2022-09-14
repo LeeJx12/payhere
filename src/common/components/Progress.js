@@ -9,6 +9,9 @@ const override = {
     borderColor: 'red'
 }
 
+/**
+ * API 호출시 프로그레스 표시
+ */
 export class Progress extends Component {
     render() {
         const { _onProgress } = this.props;

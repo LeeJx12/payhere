@@ -5,6 +5,9 @@ import { MODAL_TYPE_ALERT, TOP_NAV_TAB_HOME } from "../../common/constants";
 import { onSearch } from "../actions";
 import '../middleware';
 
+/**
+ * 검색 Input
+ */
 class SearchInput extends Component {
     constructor(props) {
         super(props);
