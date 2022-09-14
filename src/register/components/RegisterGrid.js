@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { showProgress } from "../../common/actions";
-import { SearchResultItem } from "../../search/components/SearchResultItem";
+import SearchResultItem from "../../search/components/SearchResultItem";
 import { delRepository, getRepository } from "../actions";
 
 class RegisterGrid extends Component {
