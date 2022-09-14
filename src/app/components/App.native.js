@@ -10,8 +10,8 @@ import {
 } from 'react-native';
 import { appWillMount, appWillUnmount } from '../actions';
 import { connect } from 'react-redux';
-import BootstrapStyleSheet from 'react-native-bootstrap-styles';
 import TopNavNative from '../../common/components/TopNav.native';
+import { Div } from 'reactnative-ui-bootstrap';
 import '../../redux/middleware';
 import '../../issue/middleware';
 import '../../common/reducers';
@@ -19,8 +19,6 @@ import '../../search/reducers';
 import '../../register/reducers';
 import '../../issue/reducers';
 
-const styleSheet = new BootstrapStyleSheet();
-const { s } = styleSheet;
 
 class App extends Component {
   constructor(props) {
@@ -40,10 +38,10 @@ class App extends Component {
 
       return (
           <SafeAreaView>
-              <View style={[s.containerFluid, s.overflowHidden]}>
+              <Div className={'container-fluid overflow-hidden'}>
                    <TopNavNative />
                    {/* <Container /> */}
-              </View>
+              </Div>
               {/* { _onModalShow && 
                   <Modal />
               }

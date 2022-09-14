@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { SearchInput } from "../../search/components";
 import { changeTab } from "../actions";
-import BootstrapStyleSheet from 'react-native-bootstrap-styles';
-import { FlatList, Image, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
+import { Image, SafeAreaView, Text, TouchableOpacity, View } from "react-native";
 import GITHUB from '../../../public/icons/github.svg';
-import { styles as s } from '../styles';
+import { Div, A, Button, P } from 'reactnative-ui-bootstrap';
+
 
 class TopNav extends Component {
     constructor(props) {
@@ -16,41 +16,39 @@ class TopNav extends Component {
         const { _tab } = this.props;
         
         return (
-            <View style={s.navbarNavbarExpandLgBgLightMt2}>
-                <View style={s.containerFluid}>
-                    <View style={s.navbarBrand}>
+            <Div className={'navbar navbar-expand-lg bg-light mt-2'}>
+                <Div className={'container-fluid'}>
+                    <A className={'navbar-brand'} href="#">
                         <GITHUB width={30} height={24} fill={'#000000'}/>
-                    </View>
-                    <TouchableOpacity style={s.navbarToggler}>
-                        <Text style={s.navbarTogglerIcon}></Text>
-                    </TouchableOpacity>
-                    <SafeAreaView style={s.collapseNavbarCollapse}>
-                        <FlatList 
-                            style={s.navbarNavMeAutoMb2MbLg0}
-                            data={[
-                                {key : 'HOME', name: 'Home'},
-                                {key : 'ISSUES', name: 'Issues'},
-                                {key : 'REGISTERED', name: 'Registered'}
-                            ]}
-                            renderItem={({key, name}) => (
-                                <TouchableOpacity style={s.navItem} onClick={() => this.eventHandler(key)}>
-                                    <Text>{name}</Text>
-                                </TouchableOpacity>
-                            )}
-                        />
-                    </SafeAreaView>
-                </View>
-            </View>
+                    </A>
+                    <Button className={'navbar-toggler'} type="PRIMARY">
+                        <P className={'navbar-toggler-icon'}></P>
+                    </Button>
+                    <Div className={'collapse navbar-collapse'}>
+                        <Div className={'navbar-nav me-auto mb-2 mb-lg-0'}>
+                            <Div className={'nav-item'}>
+                                <A className={`nav-link ${'HOME' === _tab ? 'active' : ''}`} onClick={() => this.eventHandler('HOME')}>Home</A>
+                            </Div>
+                            <Div className={'nav-item'}>
+                                <A className={`nav-link ${'ISSUES' === _tab ? 'active' : ''}`} onClick={() => this.eventHandler('ISSUES')}>Issues</A>
+                            </Div>
+                            <Div className={'nav-item'}>
+                                <A className={`nav-link ${'REGISTERED' === _tab ? 'active' : ''}`} onClick={() => this.eventHandler('REGISTERED')}>Registered</A>
+                            </Div>
+                        </Div>
+                        {/* <SearchInput/> */}
+                    </Div>
+                </Div>
+            </Div>
         )
     }
 
-    eventHandler = e => {
-        // e.preventDefault();
-        // const { _changeTab, _tab } = this.props;
+    eventHandler = key => {
+        const { _changeTab, _tab } = this.props;
 
-        // if (e.target.id === _tab) return;
+        if (key === _tab) return;
 
-        // _changeTab(e.target.id);
+        _changeTab(key);
     }
 }
 
